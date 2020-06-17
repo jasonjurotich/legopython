@@ -648,7 +648,12 @@ def runToPosition():
 
 # runToPosition()
 
-''' Create a short program to run 2 motors according to a beat, something like both motors in one direction, both in the other direction, one motor in opposite direction of the other. '''
+''' 
+Create a short program to run 2 motors according to a beat, 
+something like both motors in one direction, both in the other 
+direction, one motor in opposite direction of the other. 
+
+'''
 
 
 def testForceMotor1():
@@ -753,7 +758,6 @@ def hand():
 		lbwup()
 		mssd('E', False)
 		mstt('E', -75)
-
 		lbwur()
 		mssd('E', True) 
 	# There’s a missing a line of code here
