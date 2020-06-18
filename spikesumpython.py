@@ -540,232 +540,128 @@ def soundst(name='Alert', volume=100):
 
 
 
-# EXAMPLES
-
-
-def testsp():
-	print(sgv())
-	sb(60, 0.5)
-	sb(67, 0.5)
-	sb(60, 0.5)
-
-# testsp()
-
-
-def testmo():
-	print(mgg())
-
-# testmo()
-
-
-def testButtonLight():
-	while True:
-		lbwup()
-		lsi('SKULL',100)
-		wait(5)
-		lo()    
-
-# test()
-
-
-def testlight():
-	lsi('HAPPY')
-	wait(5)
-	lo()
-
-# testlight()
-
-
-def motionLightApp(): 
-	while True:
-		ori = mwno()
-		if ori == 'front':
-			lsi('ASLEEP')
-			soundst('Snoring')
-		elif ori == 'up':
-			lsi('HAPPY')
-			soundst('Triumph')
-
-motionLightApp()
-
-
-# abs() is absolute value, it works similar to int() or float()
-def lightAngle():
-	while True:
-		angle = abs(mgpa()) * 2
-		lsi('HAPPY', angle)
-
-# lightAngle()
-
-
-def testco():
-	print(cgc())
-  clu('A',20,30,50)
-  wait(5)
-  clua('A',100)
-  print(cgal())
-
-# testco()
-
-
-def testdis():
-	print(dcm())
-  dlua('C', 100)
-  wait(5)
-  dlua('C', 0)
-
-# testdis()
-
-
-def testfor():
-	while True:
-		fwup()
-		print(fgfp())
-		print(mgg())
-		ssb(44)
-
-# testfor()
 
 
 
-def runMoterForSeconds():
-	mrfs('E', 2.0, 75)
 
-runMoterForSeconds()
+hub.battery
 
-
-def runMoterForDegrees():
-	mrfd('E', 360, 50)
-
-runMoterForDegrees()
+function hub.battery.info()
 
 
-def runToPosition():
-	wait(1)
-	mrtp('E', 0, 'shortest path', 30)
-	wait(1)
-	mrtp('E', 90, 'clockwise', 100)
+hub.button.left.presses()
+hub.button.right.presses()
+hub.button.center.presses()
 
-# runToPosition()
+hub.button.left.is_pressed()
+hub.button.right.is_pressed()
+hub.button.center.is_pressed()
 
-''' 
-Create a short program to run 2 motors according to a beat, 
-something like both motors in one direction, both in the other 
-direction, one motor in opposite direction of the other. 
+hub.button.left.was_pressed()
+hub.button.right.was_pressed()
+hub.button.center.was_pressed()
 
-'''
+hub.motion.accelerometer() --> tuple with (x,y,z) axis
+hub.motion.gyroscope() --> tuple with (x,y,z) axis in degrees
+hub.motion.position() --> tuple with (x,y,z) axis in degrees --> seems similar to gyroscope but not the same values?
+hub.motion.orientation() --> string with gesture
+hub.motion.callback(XXX) --> ?
+hub.motion.gesture('GESTURE') --> boolean --> is currently GESTURE
+hub.motion.was_gesture('GESTURE') --> boolean --> was GESTURE since last call
+
+# GESTURES
+leftside, rightside, down, up, front, back
+tapped, doubletapped, shake, freefall
 
 
-def testForceMotor1():
-	msds(25)
-	fwup()
-	mstt()
-	fwur()
-	mstp()
+
+hub.Image.IMAGENAME  (ex. hub.Image.SMILE)
+
+# IMAGE POSSIBILITIES
+"""
+YES, XMAS, ANGRY, ARROW_E, ARROW_N, ARROW_NE, ARROW_NW, 
+ARROW_S, ARROW_SE, ARROW_SW, ARROW_W, ASLEEP, BUTTERFLY,
+CHESSBOARD, CLOCK1, CLOCK2, STICKFIGURE, CLOCK3, CLOCK4,
+CLOCK5, CLOCK6, CLOCK7, CLOCK8, CLOCK9, CONFUSED,COW, 
+DIAMOND, DIAMOND_SMALL, DUCK, FABULOUS, GHOST, GIRAFFE,
+GO_RIGHT, GO_LEFT, GO_IP, GO_DOWN, HAPPY, HEART, SNAKE,
+HEART_SMALL, HOUSE, MEH, MUSIC_CROTCHET, MUSIC_QUAVER,
+MUSIC_QUAVERS, NO, PACMAN,PITCHFORK, RABBIT, 
+ROLLERSKATE, SAD, SILLY, SKULL, SMILE, SQUARE
+"""
+
+
+hub.display.show(image)
+
+image = hub.Image("90004\n06090\n00900\n09090\n90009")
+image = hub.Image('90009:90009:99999:09640:00900')
+
+
+# The \n are separators by line. Each number is for each pixel/block on the screen. 
+# Each number, 0-9, sets the brightness of that pixel via pwm.
+
+
+hub.led(255, 0, 0) # red  (r,g,b)
+hub.led(3) # blue   (colors 0 - 10)
+hub.led
+for i in range(11):
+    hub.led(i)
+    time.sleep(1)
 	
-# testForceMotor1()
-
-
-def testForceMotor2():
-	msds(25)
-	fwup()
-	fwur()
-	mstt()
-	fwup()
-	fwur()
-	mstp()
 	
-# testForceMotor2()
+hub.port.A.motor.mode(1) (stop mode?)
+hub.port.A.motor.float()
+hub.port.A.motor.brake()
+
+hub.port.A.motor.pwm(100)
+
+hub.port.A.motor.run_at_speed(
+  speed = 50, 
+  max_power = 100,
+  acceleration = 100, 
+  deceleration = 100, 
+  stall = False)
+
+hub.port.A.motor.run_for_degrees(90, 50)
+
+hub.port.A.motor.run_to_position(90, 50)
+
+hub.port.A.motor.default()
+
+hub.port.A.motor.run_for_time(100, 50)
+	
+p = hub.port.A.motor.pair(hub.port.B.motor)
+p.run_for_time(200,40,-40)
 
 
-def forceMotorWhileCount():
-	count = 1
-	msds(25)
-	while count < 5:
-		fwup()
-		mstt()
-		fwur()
-		mstp()
-		count += 1
+#MOTOR ENCODER
+hub.port.A.device.get() --> returns and integer array with [0,relative position,absolute position,0].
 
-# forceMotorWhileCount()
+#COLOR
+hub.port.F.device.get() --> returns integer array [reflected light, color id]; color id can be type None
 
+#FORCE
+hub.port.E.device.get() --> returns integer array [(raw) pressure, pressed, (SI) pressure?];
 
-def forceMotorWhileTrue():
-	while True:
-		mstt('E', fgfp())
-
-# forceMotorWhileTrue()
-
-def colorMotor():
-	while timer.now() < 30:
-		color = cwnc()
-		if color == 'violet':
-			mrfr('E',1,100)
-		elif color == 'yellow':
-			mrfr('F',1,100)
-
-# colorMotor()
-
-
-def colorReflectMotor():
-	while True:
-		color = cwnc()
-
-		if color == 'magenta':
-			mrfr('E',1,per)
-		elif color == 'yellow':
-			mrfr('F',1,per)
-
-# colorReflectMotor()
-
-
-def distanceMotor():
-	while True:
-		dwdft('B', 20, 'cm')
-		mstt()
-		dwdct('B', 20, 'cm')
-		mstp()
-
-# distanceMotor()
-
-
-def distancePerMotor():
-	while True:
-		per = dper()
-		if per is not None:
-			mstt('E', 100 - per)
-
-# distancePerMotor()
-
-
-def motorPair():
-	mpsds('E','F',50)
-	mpm('E','F',2,'seconds')
-
-	mpsds('E','F',-50)
-	mpm('E','F',2,'seconds')
-
-	mpmt('E','F',10,'cm',25,75)
-	mpmt('E','F',1,'rotations',-50,50)
-
-# motorPair()
-
-
-def hand():
-	mrfs('E', 1, 75)
-	while True:
-		lbwup()
-		mssd('E', False)
-		mstt('E', -75)
-		lbwur()
-		mssd('E', True) 
-	# There’s a missing a line of code here
-
-# hand()
-
-
-def testsound():
-	sound('Alert', 3)
-
-# testsound()
+#The first entry ranges from 0-10 and appears to be the pressure in Newtons. 
+#The second entry is 0 or 1 for released or pressed. 
+#The third entry appears to also be pressure, but ranging from 382-687. 
+#It is labelled as SI_PRESSURE, but does not appear to be in Newtons or grams.
+	
+	
+#Ultrasonic sensor:	
+hub.port.F.device.get() --> returns integer array [distance (cm)] with a single entry (distance in cm)	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
