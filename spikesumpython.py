@@ -547,6 +547,7 @@ def soundst(name='Alert', volume=100):
 
 
 # HUB MICROPYTHON POR TERMINAL
+# Need to put the method, then period and then tab to see the options. 
 
 
 # BATTERY
