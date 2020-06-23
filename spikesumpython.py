@@ -1,3 +1,5 @@
+# SPIKE HUB POR IOS OR ANDROID APP
+
 import math
 
 from spike import App
@@ -544,11 +546,14 @@ def soundst(name='Alert', volume=100):
 
 
 
+# HUB MICROPYTHON POR TERMINAL
+
+
+# BATTERY
 hub.battery
+hub.battery.info()
 
-function hub.battery.info()
-
-
+# BUTTONS
 hub.button.left.presses()
 hub.button.right.presses()
 hub.button.center.presses()
@@ -561,9 +566,22 @@ hub.button.left.was_pressed()
 hub.button.right.was_pressed()
 hub.button.center.was_pressed()
 
+
+
+# SOUND 
+
+def on_start():
+  hub.sound.volume()
+  hub.sound.volume(10)  # 0 - 10 
+  hub.sound.beep()
+  hub.sound.beep(2000, 500, 3)  # freq, time, waveform (sin,square,triangle, sawtooth)
+
+
+
+# MOTION
 hub.motion.accelerometer() --> tuple with (x,y,z) axis
 hub.motion.gyroscope() --> tuple with (x,y,z) axis in degrees
-hub.motion.position() --> tuple with (x,y,z) axis in degrees --> seems similar to gyroscope but not the same values?
+hub.motion.position() --> tuple with (x,y,z) axis in degrees 
 hub.motion.orientation() --> string with gesture
 hub.motion.callback(XXX) --> ?
 hub.motion.gesture('GESTURE') --> boolean --> is currently GESTURE
@@ -573,41 +591,76 @@ hub.motion.was_gesture('GESTURE') --> boolean --> was GESTURE since last call
 leftside, rightside, down, up, front, back
 tapped, doubletapped, shake, freefall
 
+def on_start(vm, stack):
+  hub.motion.accelerometer()
+  hub.motion.gyroscope()
+  hub.motion.position()
+  hub.motion.orientation()  # has a callback option
+  def beep():
+      hub.sound.volume(10)
+      hub.sound.beep(2000, 500, 3)
+  hub.motion.callback(beep())
+  hub.motion.gesture('down')  # is it currently active?
+  hub.motion.was_gesture('down')  # has it been active since the last call?
 
+
+
+# IMAGE 
+# The \n are separators by line. Each number is for each pixel/block on the screen. 
+# Each number, 0-9, sets the brightness of that pixel via pwm.
 
 hub.Image.IMAGENAME  (ex. hub.Image.SMILE)
-
-# IMAGE POSSIBILITIES
-"""
-YES, XMAS, ANGRY, ARROW_E, ARROW_N, ARROW_NE, ARROW_NW, 
-ARROW_S, ARROW_SE, ARROW_SW, ARROW_W, ASLEEP, BUTTERFLY,
-CHESSBOARD, CLOCK1, CLOCK2, STICKFIGURE, CLOCK3, CLOCK4,
-CLOCK5, CLOCK6, CLOCK7, CLOCK8, CLOCK9, CONFUSED,COW, 
-DIAMOND, DIAMOND_SMALL, DUCK, FABULOUS, GHOST, GIRAFFE,
-GO_RIGHT, GO_LEFT, GO_IP, GO_DOWN, HAPPY, HEART, SNAKE,
-HEART_SMALL, HOUSE, MEH, MUSIC_CROTCHET, MUSIC_QUAVER,
-MUSIC_QUAVERS, NO, PACMAN,PITCHFORK, RABBIT, 
-ROLLERSKATE, SAD, SILLY, SKULL, SMILE, SQUARE
-"""
-
 
 hub.display.show(image)
 
 image = hub.Image("90004\n06090\n00900\n09090\n90009")
 image = hub.Image('90009:90009:99999:09640:00900')
 
-
-# The \n are separators by line. Each number is for each pixel/block on the screen. 
-# Each number, 0-9, sets the brightness of that pixel via pwm.
-
-
-hub.led(255, 0, 0) # red  (r,g,b)
-hub.led(3) # blue   (colors 0 - 10)
-hub.led
-for i in range(11):
-    hub.led(i)
-    time.sleep(1)
+import hub, utime
+hub.display.show(hub.Image.HAPPY)
+image = hub.Image("90009\n09090\n00900\n09090\n90009")
+image = hub.Image(2, 2, b'\x08\x08\x08\x08')
+hub.display.show(image)
+utime.sleep(1)
+		
+hub.Image.width()
+hub.Image.height()
+hub.Image.get_pixel(2,3)
+hub.Image.set_pixel(3,1,6)
 	
+'''
+Image.HEART, Image.HEART_SMALL, Image.HAPPY, Image.SMILE, Image.SAD, Image.CONFUSED
+Image.ANGRY, Image.ASLEEP, Image.SURPRISED, Image.SILLY, Image.FABULOUS, Image.MEH
+Image.CLOCK12, Image.CLOCK11, Image.CLOCK10, Image.CLOCK9, Image.CLOCK8, Image.CLOCK7, 
+Image.CLOCK6, Image.CLOCK5, Image.CLOCK4, Image.CLOCK3, Image.CLOCK2, Image.CLOCK1
+Image.ARROW_N, Image.ARROW_NE, Image.ARROW_E, Image.ARROW_SE, Image.ARROW_S, 
+Image.ARROW_SW, Image.ARROW_W, Image.ARROW_NW, Image.TRIANGLE, Image.TRIANGLE_LEFT
+Image.CHESSBOARD, Image.DIAMOND, Image.DIAMOND_SMALL, Image.SQUARE, Image.SQUARE_SMALL
+Image.RABBIT, Image.COW, Image.MUSIC_CROTCHET, Image.MUSIC_QUAVER, Image.MUSIC_QUAVERS
+Image.PITCHFORK, Image.XMAS, Image.PACMAN, Image.TARGET, Image.TSHIRT, Image.ROLLERSKATE
+Image.DUCK, Image.HOUSE, Image.TORTOISE, Image.BUTTERFLY, Image.STICKFIGURE, Image.GHOST
+Image.SWORD, Image.GIRAFFE, Image.SKULL, Image.UMBRELLA, Image.SNAKE, Image.ALL_CLOCKS
+Image.ALL_ARROWS, Image.YES, Image.NO
+'''
+
+
+
+# LEDS
+import hub, utime	
+def on_start(vm, stack):
+  hub.led(255, 0, 0) # red  (r,g,b)
+  hub.led(3) # blue   (colors 0 - 10)
+  hub.led
+  for i in range(11):
+      hub.led(i)
+      utime.sleep(1)	
+	
+	
+	
+	
+	
+
+# MOTORS	
 	
 hub.port.A.motor.mode(1) (stop mode?)
 hub.port.A.motor.float()
@@ -623,11 +676,8 @@ hub.port.A.motor.run_at_speed(
   stall = False)
 
 hub.port.A.motor.run_for_degrees(90, 50)
-
 hub.port.A.motor.run_to_position(90, 50)
-
 hub.port.A.motor.default()
-
 hub.port.A.motor.run_for_time(100, 50)
 	
 p = hub.port.A.motor.pair(hub.port.B.motor)
@@ -649,19 +699,43 @@ hub.port.E.device.get() --> returns integer array [(raw) pressure, pressed, (SI)
 #It is labelled as SI_PRESSURE, but does not appear to be in Newtons or grams.
 	
 	
+def on_start():
+  hub.port.A.motor.mode(1)
+  hub.port.A.motor.get()
+  hub.port.A.motor.pwm(100) # from -100 to 100
+  utime.sleep(1)
+  hub.port.A.motor.float()
+  hub.port.A.motor.brake()
+  hub.port.A.motor.run_at_speed(speed = 50, max_power = 100, acceleration = 100, deceleration = 100, stall = False)
+  hub.port.A.motor.run_for_degrees(degrees = 90, speed = 50)
+  hub.port.A.motor.run_to_position(90, 50)  # position and speed
+  hub.port.A.motor.default()
+  hub.port.A.motor.run_for_time(100, 50)   # time - msec and speed
+  # only works if motors are connected
+  p = hub.port.A.motor.pair(hub.port.B.motor)
+  p.pwm(40,-40)   # drive straight
+  p.run_for_time(200,40,-40)
+  p.float()   # not working yet	
+
+	
+	
+	
+	
+# EXAMPLES
+
+def on_start():
+  # can ask if it is currently pressed, was pressed, how many times it has been pressed, and callback
+  while True:
+      if hub.button.left.is_pressed():
+          hub.display.show(hub.Image.YES)
+      elif hub.button.right.is_pressed():
+          hub.display.show(hub.Image.NO)
+		
+  hub.button.center.is_pressed()  # checks current state of center button
+  hub.button.center.was_pressed()  # checks if the  center button has been pressed since last checked
+  hub.button.center.presses()  # returns # presses since last call and rezeros
+  
+  smile()
+	
 #Ultrasonic sensor:	
 hub.port.F.device.get() --> returns integer array [distance (cm)] with a single entry (distance in cm)	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
