@@ -581,7 +581,11 @@ def on_start():
 
 # MOTION
 hub.motion.accelerometer() --> tuple with (x,y,z) axis
+hub.motion.accelerometer_filter()
 hub.motion.gyroscope() --> tuple with (x,y,z) axis in degrees
+hub.motion.gyroscope_filter()
+hub.motion.preset_yaw()
+hub.motion.reset_yaw()
 hub.motion.position() --> tuple with (x,y,z) axis in degrees 
 hub.motion.orientation() --> string with gesture
 hub.motion.callback(XXX) --> ?
@@ -589,8 +593,8 @@ hub.motion.gesture('GESTURE') --> boolean --> is currently GESTURE
 hub.motion.was_gesture('GESTURE') --> boolean --> was GESTURE since last call
 
 # GESTURES
-leftside, rightside, down, up, front, back
-tapped, doubletapped, shake, freefall
+LEFTSIDE, RIGHTSIDE, UP, DOWN, FRONT, BACK
+TAPPED, DOUBLETAPPED, SHAKE, FREEFALL
 
 def on_start(vm, stack):
   hub.motion.accelerometer()
@@ -613,6 +617,8 @@ def on_start(vm, stack):
 hub.Image.IMAGENAME  (ex. hub.Image.SMILE)
 
 hub.display.show(image)
+hub.display.rotation() # takes two arguments
+hub.display.pixel() # takes two arguments
 
 image = hub.Image("90004\n06090\n00900\n09090\n90009")
 image = hub.Image('90009:90009:99999:09640:00900')
@@ -628,6 +634,12 @@ hub.Image.width()
 hub.Image.height()
 hub.Image.get_pixel(2,3)
 hub.Image.set_pixel(3,1,6)
+hub.Image.shift_right()
+hub.Image.shift_left()
+hub.Image.shift_up()
+hub.Image.shift_down()
+#shift takes two arguments. get_pixel takes 3 arguments, set_pixel takes 4
+
 	
 '''
 Image.HEART, Image.HEART_SMALL, Image.HAPPY, Image.SMILE, Image.SAD, Image.CONFUSED
@@ -655,7 +667,7 @@ def on_start(vm, stack):
   for i in range(11):
       hub.led(i)
       utime.sleep(1)	
-	
+# led has no methods, just 3 arguments	
 	
 	
 	
