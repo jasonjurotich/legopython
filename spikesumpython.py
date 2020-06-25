@@ -25,6 +25,9 @@ def waitu(condition):
 
 
 
+
+
+
 # BUTTONS
 
 def lbwup():
