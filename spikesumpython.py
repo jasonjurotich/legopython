@@ -551,6 +551,141 @@ def soundst(name='Alert', volume=100):
 
 # HUB MICROPYTHON POR TERMINAL
 # Need to put the method, then period and then tab to see the options. 
+# Options in brackets. Take brackets out and put option for method. 
+
+
+hub()
+
+
+# ONE COMMAND
+hub.power_off()
+hub.info()
+hub.temperature()
+hub.status()
+hub.repl_restart()
+hub.supervision.info()
+hub.file_transfer()
+
+# MULTIPLE COMMANDS
+hub.bluetooth()
+hub.ble()
+hub.battery()
+hub.USB_VCP()
+hub.button()
+hub.sound()
+hub.motion()
+hub.led()
+hub.Image()
+hub.display()
+hub.port()
+
+
+
+
+# BLUETOOTH	
+hub.bluetooth.discoverable()
+hub.bluetooth.info()
+
+hub.ble.connect()
+hub.ble.scan()
+hub.ble.scan_result()
+hub.ble.mac()
+hub.ble.rssi()
+
+
+
+# BATTERY
+hub.battery.info()
+hub.battery.BATTERY_BAD_BATTERY()
+hub.battery.BATTERY_HUB_TEMPERATURE_CRITICAL_OUT_OF_RANGE()   
+hub.battery.BATTERY_NO_ERROR()
+hub.battery.BATTERY_TEMPERATURE_OUT_OF_RANGE()
+hub.battery.BATTERY_TEMPERATURE_SENSOR_FAIL()
+hub.battery.BATTERY_VOLTAGE_TOO_LOW()
+hub.battery.CHARGER_STATE_CHARGING_COMPLETED()
+hub.battery.CHARGER_STATE_CHARGING_ONGOING()  
+hub.battery.CHARGER_STATE_DISCHARGING()
+hub.battery.CHARGER_STATE_FAIL()              
+hub.battery.USB_CH_PORT_CDP()
+hub.battery.USB_CH_PORT_DCP()            
+hub.battery.USB_CH_PORT_NONE()
+hub.battery.USB_CH_PORT_SDP()               
+hub.battery.capacity_left()
+hub.battery.charger_detect()
+hub.battery.current()         
+hub.battery.info()            
+hub.battery.temperature()     
+hub.battery.voltage()
+
+
+
+
+
+
+
+
+
+
+# BUTTON
+hub.button.left()
+hub.button.right()
+hub.button.center()
+
+hub.button.[left/right/center].pressed()
+hub.button.[left/right/center].is_pressed()
+hub.button.[left/right/center].was_pressed()
+
+
+
+
+# SOUND
+
+
+
+
+
+# MOTION
+
+
+
+
+
+# LED
+
+
+
+
+# IMAGE
+
+
+
+
+# DISPLAY
+
+
+
+
+
+
+
+
+
+# PORT
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # BATTERY
