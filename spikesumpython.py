@@ -620,6 +620,21 @@ hub.battery.voltage()
 
 
 
+# USB
+hub.USB_VCP.any()
+hub.USB_VCP.init()
+hub.USB_VCP.readline()
+hub.USB_VCP.readlines()
+hub.USB_VCP.readinto()
+hub.USB_VCP.setinterupt()
+hub.USB_VCP.close()
+hub.USB_VCP.send()
+hub.USB_VCP.CTS()
+hub.USB_VCP.isconnected()
+hub.USB_VCP.read()
+hub.USB_VCP.write()
+hub.USB_VCP.RTS()
+hub.USB_VCP.recv()
 
 
 
@@ -630,16 +645,26 @@ hub.battery.voltage()
 hub.button.left()
 hub.button.right()
 hub.button.center()
+hub.button.connect()
 
-hub.button.[left/right/center].pressed()
+hub.button.[left/right/center].presses()
 hub.button.[left/right/center].is_pressed()
 hub.button.[left/right/center].was_pressed()
-
+hub.button.[left/right/center].on_change()
 
 
 
 # SOUND
+hub.sound.beep()
+hub.sound.play()
+hub.sound.volume()
+hub.sound.SOUND_SIN()
+hub.sound.SOUND_SQUARE()
+hub.sound.SOUND_TRIANGLE()
+hub.sound.SOUND_SAWTOOTH()
 
+# from_bytes
+# to_bytes
 
 
 
