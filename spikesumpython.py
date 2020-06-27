@@ -30,6 +30,10 @@ def waitu(condition):
 
 # BUTTONS
 
+
+
+
+
 def lbwup():
 	return hub.left_button.wait_until_pressed()
 
@@ -943,7 +947,6 @@ def on_start(vm, stack):
 
 
 def on_start():
-  # can ask if it is currently pressed, was pressed, how many times it has been pressed, and callback
   while True:
       if hub.button.left.is_pressed():
           hub.display.show(hub.Image.YES)
@@ -959,16 +962,24 @@ def on_start():
   utime.sleep(1)
   hub.port.A.motor.float()
   hub.port.A.motor.brake()
-  hub.port.A.motor.run_at_speed(speed = 50, max_power = 100, acceleration = 100, deceleration = 100, stall = False)
+  
+  hub.port.A.motor.run_at_speed(
+  	speed = 50, 
+  	max_power = 100, 
+  	acceleration = 100, 
+  	deceleration = 100, 
+  	stall = False)
+  	
   hub.port.A.motor.run_for_degrees(degrees = 90, speed = 50)
   hub.port.A.motor.run_to_position(90, 50)  
   hub.port.A.motor.default()
   hub.port.A.motor.run_for_time(100, 50)   
+  
   # only works if motors are connected
   p = hub.port.A.motor.pair(hub.port.B.motor)
   p.pwm(40,-40)   # drive straight
   p.run_for_time(200,40,-40)
-  p.float()   # not working yet	
+
 
 
 
