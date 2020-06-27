@@ -809,12 +809,6 @@ TAPPED, DOUBLETAPPED, SHAKE, FREEFALL
 
 
 
-
-
-
-
-
-
 # PORT
 
 hub.port.ATTACHED        
@@ -888,50 +882,52 @@ hub.port.[A,B,C,D,E,F].motor.pair() # 2 args
 
 
 
-
-
-
-
 #MOTOR ENCODER
 hub.port.A.device.get() --> returns integer array with [0,relative position,absolute position,0].
 
+"""
+hub.port.At': {'datasets': 1, 'type': 0, 'figures': 1, 'decimals': 0}, 'capability': b' @\x00\x00\x01\x04', 'map_out': 8, 'name': 'LOAD', 'pct': (0.0, 100.0), 'map_in': 8, 'si': (0.0, 127.0), 'raw': (0.0, 127.0)}, {'symbol': '\x01\x04\x01', 'format': {'datasets': 0, 'type': 0, 'figures': 0, 'decimals': 194}, 'capability': b'\x00\x00\x00\x00\x00\x00', 'map_out': 0, 'name': 'K', 'pct': (3444.96, 1.12104e-43), 'map_in': 0, 'si': (0.0, 2.24208e-44), 'raw': (5.73972e-42, 5.73972e-42)}], 'speed': 115200, 'hw_version': 4096, 'combi_modes': (14, 15), 'type': 48}
+"""
+
 #COLOR
 hub.port.F.device.get() --> returns integer array [reflected light, color id]; color id can be type None
+# [1, None, 5, 5, 5]
+# [32, 0, 150, 153, 153]
+# [46, 4, 135, 259, 312]
+
+"""
+hub.port.D'DEBUG', 'pct': (0.0, 100.0), 'map_in': 16, 'si': (0.0, 65535.0), 'raw': (0.0, 65535.0)}, {'symbol': '', 'format': {'datasets': 7, 'type': 1, 'figures': 5, 'decimals': 0}, 'capability': b'@@\x00\x00\x04\x84', 'map_out': 0, 'name': 'CALIB', 'pct': (0.0, 100.0), 'map_in': 0, 'si': (0.0, 65535.0), 'raw': (0.0, 65535.0)}], 'speed': 115200, 'hw_version': 268435456, 'combi_modes': (99,), 'type': 61}
+"""
+
+
 
 #FORCE
 hub.port.E.device.get() --> returns integer array [(raw) pressure, pressed, (SI) pressure?];
+# [9, 1, 663]
+
+"""
+hub.port.Fres': 4, 'decimals': 0}, 'capability': b'\x00\x00\x00\x00\x04\x84', 'map_out': 0, 'name': 'FRAW', 'pct': (0.0, 100.0), 'map_in': 16, 'si': (0.0, 1023.0), 'raw': (0.0, 1023.0)}, {'symbol': 'RAW', 'format': {'datasets': 1, 'type': 1, 'figures': 4, 'decimals': 0}, 'capability': b'\x00\x00\x00\x00\x04\x84', 'map_out': 0, 'name': 'FPRAW', 'pct': (0.0, 100.0), 'map_in': 16, 'si': (0.0, 1023.0), 'raw': (0.0, 1023.0)}, {'symbol': '', 'format': {'datasets': 8, 'type': 1, 'figures': 4, 'decimals': 0}, 'capability': b'\x00@\x00\x00\x04\x84', 'map_out': 0, 'name': 'CALIB', 'pct': (0.0, 100.0), 'map_in': 0, 'si': (0.0, 1023.0), 'raw': (0.0, 1023.0)}], 'speed': 115200, 'hw_version': 268435456, 'combi_modes': (63,), 'type': 63}
+"""
+
 
 #The first entry ranges from 0-10 and appears to be the pressure in Newtons. 
 #The second entry is 0 or 1 for released or pressed. 
 #The third entry appears to also be pressure, but ranging from 382-687. 
 #It is labelled as SI_PRESSURE, but does not appear to be in Newtons or grams.
 
-#Ultrasonic sensor:	
+
+#Ultrasonic Distance sensor:	off by about 1 cm
 hub.port.F.device.get() --> returns integer array [distance (cm)] with a single entry (distance in cm)
+# [15]
+""" 
+'pct': (0.0, 100.0), 'map_in': 0, 'si': (0.0, 255.0), 'raw': (0.0, 255.0)}], 'speed': 115200, 'hw_version': 268435456, 'combi_modes': (), 'type': 62} 
+"""
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
 	
 # EXAMPLES
 
