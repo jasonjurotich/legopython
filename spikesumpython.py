@@ -550,11 +550,16 @@ WoodTap, Zip
 
 
 # HUB MICROPYTHON POR TERMINAL
+# Review callback options in each method
+# hub.motion.callback(beep())
 # Need to put the method, then period and then tab to see the options. 
 # Options in brackets. Take brackets out and put option for method. 
 
 
 hub()
+utime()
+
+utime.sleep(1)
 
 
 # ONE COMMAND
@@ -565,7 +570,8 @@ hub.status()
 hub.repl_restart()
 hub.supervision.info()
 hub.file_transfer()
-hub.led()
+hub.led() # 3 args
+
 
 # MULTIPLE COMMANDS
 hub.bluetooth()
@@ -574,9 +580,9 @@ hub.battery()
 hub.USB_VCP()
 hub.button()
 hub.sound()
-hub.motion()
-hub.Image()
 hub.display()
+hub.Image()
+hub.motion()
 hub.port()
 
 
@@ -658,9 +664,12 @@ hub.button.[left/right/center].on_change()
 
 
 # SOUND
-hub.sound.beep()
+
 hub.sound.play()
-hub.sound.volume()
+hub.sound.volume() # 0 - 10 
+hub.sound.beep() # 3 args
+# freq, time, waveform (sin,square,triangle, sawtooth)
+# hub.sound.beep(2000, 500, 3)  
 
 hub.sound.SOUND_SIN()
 hub.sound.SOUND_SQUARE()
@@ -668,6 +677,69 @@ hub.sound.SOUND_TRIANGLE()
 hub.sound.SOUND_SAWTOOTH()
 
 # from_bytes to_bytes
+
+
+
+
+# DISPLAY
+
+hub.display.show()
+hub.display.clear()
+hub.display.rotation() # takes two arguments
+hub.display.pixel() # takes two arguments
+
+
+
+		
+# IMAGE
+
+hub.Image.get_pixel() # 3 args      
+hub.Image.set_pixel() # 4 args
+hub.Image.height()     
+hub.Image.width()      
+hub.Image.shift_left() # 2 args     
+hub.Image.shift_right() # 2 args   
+hub.Image.shift_up() # 2 args  
+hub.Image.shift_down() # 2 args
+
+image = hub.Image("90004\n06090\n00900\n09090\n90009")
+image = hub.Image('90009:90009:99999:09640:00900')
+image = hub.Image("90009\n09090\n00900\n09090\n90009")
+image = hub.Image(2, 2, b'\x08\x08\x08\x08')
+
+
+'''
+hub.Image.HEART, hub.Image.HEART_SMALL, hub.Image.HAPPY, 
+hub.Image.SMILE, hub.Image.SAD, hub.Image.CONFUSED, 
+hub.Image.ANGRY, hub.Image.ASLEEP, hub.Image.SURPRISED, 
+hub.Image.SILLY, hub.Image.FABULOUS, hub.Image.MEH,
+hub.Image.CLOCK12, hub.Image.CLOCK11, hub.Image.CLOCK10, 
+hub.Image.CLOCK9, hub.Image.CLOCK8, hub.Image.CLOCK7, 
+hub.Image.CLOCK6, hub.Image.CLOCK5, hub.Image.CLOCK4, 
+hub.Image.CLOCK3, hub.Image.CLOCK2, hub.Image.CLOCK1,
+hub.Image.ARROW_N, hub.Image.ARROW_NE, hub.Image.ARROW_E, 
+hub.Image.ARROW_SE, hub.Image.ARROW_S, hub.Image.ARROW_SW, 
+hub.Image.ARROW_W, hub.Image.ARROW_NW, hub.Image.TRIANGLE, 
+hub.Image.TRIANGLE_LEFT, hub.Image.CHESSBOARD, hub.Image.DIAMOND, 
+hub.Image.DIAMOND_SMALL, hub.Image.SQUARE, hub.Image.SQUARE_SMALL, 
+hub.Image.RABBIT, hub.Image.COW, hub.Image.MUSIC_CROTCHET, 
+hub.Image.MUSIC_QUAVER, hub.Image.MUSIC_QUAVERS, hub.Image.PITCHFORK, 
+hub.Image.XMAS, hub.Image.PACMAN, hub.Image.TARGET, 
+hub.Image.TSHIRT, hub.Image.ROLLERSKATE, hub.Image.DUCK, 
+hub.Image.HOUSE, hub.Image.TORTOISE, hub.Image.BUTTERFLY, 
+hub.Image.STICKFIGURE, hub.Image.GHOST, hub.Image.SWORD, 
+hub.Image.GIRAFFE, hub.Image.SKULL, hub.Image.UMBRELLA, 
+hub.Image.SNAKE, hub.Image.ALL_CLOCKS, hub.Image.ALL_ARROWS, 
+hub.Image.YES, hub.Image.NO
+'''
+
+
+# The \n are separators by line. Each number is for each pixel/block on the screen. 
+# Each number, 0-9, sets the brightness of that pixel via pwm.
+
+# You use display with image:
+
+hub.display.show(hub.Image.YES)
 
 
 
@@ -719,16 +791,16 @@ hub.motion.[BACK,UP,etc].splitlines()
 
 
 
-hub.motion.accelerometer()
+hub.motion.accelerometer() # tuple with (x,y,z) axis
 hub.motion.accelerometer_filter()
-hub.motion.gyroscope()       
+hub.motion.gyroscope() # tuple with (x,y,z) axis in degrees      
 hub.motion.gyroscope_filter()
-hub.motion.orientation()
-hub.motion.position()   
+hub.motion.orientation() # string with gesture Upper or lower case???
+hub.motion.position() # tuple with (x,y,z) axis in degrees
 hub.motion.preset_yaw()      
 hub.motion.reset_yaw()
-hub.motion.was_gesture()
-hub.motion.gesture()
+hub.motion.was_gesture() # boolean: was GESTURE since last call
+hub.motion.gesture() # boolean: is currently GESTURE
 
 # GESTURES
 LEFTSIDE, RIGHTSIDE, UP, DOWN, FRONT, BACK
@@ -739,58 +811,6 @@ TAPPED, DOUBLETAPPED, SHAKE, FREEFALL
 
 
 
-
-# DISPLAY
-
-hub.display.show()
-hub.display.clear()
-hub.display.pixel()
-hub.display.rotation()
-
-
-
-
-# IMAGE
-
-hub.Image.get_pixel()       
-hub.Image.set_pixel() 
-hub.Image.height()     
-hub.Image.width()      
-hub.Image.shift_left()     
-hub.Image.shift_right()    
-hub.Image.shift_up()   
-hub.Image.shift_down()
-
-
-'''
-hub.Image.HEART, hub.Image.HEART_SMALL, hub.Image.HAPPY, 
-hub.Image.SMILE, hub.Image.SAD, hub.Image.CONFUSED, 
-hub.Image.ANGRY, hub.Image.ASLEEP, hub.Image.SURPRISED, 
-hub.Image.SILLY, hub.Image.FABULOUS, hub.Image.MEH,
-hub.Image.CLOCK12, hub.Image.CLOCK11, hub.Image.CLOCK10, 
-hub.Image.CLOCK9, hub.Image.CLOCK8, hub.Image.CLOCK7, 
-hub.Image.CLOCK6, hub.Image.CLOCK5, hub.Image.CLOCK4, 
-hub.Image.CLOCK3, hub.Image.CLOCK2, hub.Image.CLOCK1,
-hub.Image.ARROW_N, hub.Image.ARROW_NE, hub.Image.ARROW_E, 
-hub.Image.ARROW_SE, hub.Image.ARROW_S, hub.Image.ARROW_SW, 
-hub.Image.ARROW_W, hub.Image.ARROW_NW, hub.Image.TRIANGLE, 
-hub.Image.TRIANGLE_LEFT, hub.Image.CHESSBOARD, hub.Image.DIAMOND, 
-hub.Image.DIAMOND_SMALL, hub.Image.SQUARE, hub.Image.SQUARE_SMALL, 
-hub.Image.RABBIT, hub.Image.COW, hub.Image.MUSIC_CROTCHET, 
-hub.Image.MUSIC_QUAVER, hub.Image.MUSIC_QUAVERS, hub.Image.PITCHFORK, 
-hub.Image.XMAS, hub.Image.PACMAN, hub.Image.TARGET, 
-hub.Image.TSHIRT, hub.Image.ROLLERSKATE, hub.Image.DUCK, 
-hub.Image.HOUSE, hub.Image.TORTOISE, hub.Image.BUTTERFLY, 
-hub.Image.STICKFIGURE, hub.Image.GHOST, hub.Image.SWORD, 
-hub.Image.GIRAFFE, hub.Image.SKULL, hub.Image.UMBRELLA, 
-hub.Image.SNAKE, hub.Image.ALL_CLOCKS, hub.Image.ALL_ARROWS, 
-hub.Image.YES, hub.Image.NO
-'''
-
-
-# You use display with image:
-
-hub.display.show(hub.Image.YES)
 
 
 
@@ -813,12 +833,12 @@ hub.port.D
 hub.port.E               
 hub.port.F               
 
-hub.port.[A,B,C,D,E,F].
 
-        
+hub.port.[A,B,C,D,E,F].
+  
 hub.port.[A,B,C,D,E,F].info
 hub.port.[A,B,C,D,E,F].mode            
-hub.port.[A,B,C,D,E,F].pwm
+hub.port.[A,B,C,D,E,F].pwm  # PowerMeter??
 hub.port.[A,B,C,D,E,F].device
 
 
@@ -840,165 +860,40 @@ hub.port.[A,B,C,D,E,F].motor.STOP_BRAKE()
 hub.port.[A,B,C,D,E,F].motor.STOP_FLOAT()    
 hub.port.[A,B,C,D,E,F].motor.STOP_HOLD()
 
-hub.port.[A,B,C,D,E,F].motor.get()
-hub.port.[A,B,C,D,E,F].motor.brake()           
+
+hub.port.[A,B,C,D,E,F].motor.brake()         
 hub.port.[A,B,C,D,E,F].motor.busy()           
-hub.port.[A,B,C,D,E,F].motor.default()
 hub.port.[A,B,C,D,E,F].motor.float()       
-hub.port.[A,B,C,D,E,F].motor.hold()         
-hub.port.[A,B,C,D,E,F].motor.mode()          
-hub.port.[A,B,C,D,E,F].motor.pair()
-hub.port.[A,B,C,D,E,F].motor.pid()          
-hub.port.[A,B,C,D,E,F].motor.preset()          
-hub.port.[A,B,C,D,E,F].motor.pwm()        
-hub.port.[A,B,C,D,E,F].motor.run_at_speed()
-hub.port.[A,B,C,D,E,F].motor.run_for_degrees()                 
-hub.port.[A,B,C,D,E,F].motor.run_for_time()
-hub.port.[A,B,C,D,E,F].motor.run_to_position()
+hub.port.[A,B,C,D,E,F].motor.hold()   
+
+hub.port.[A,B,C,D,E,F].motor.default()
+'''{'pid': (0, 0, 0), 'max_power': 0, 'speed': 0, 'stall': True, 'deceleration': 150, 'stop': 1, 'callback': <bound_method>, 'acceleration': 100}'''
+
+hub.port.[A,B,C,D,E,F].motor.get()  # [0, 0, 175, 0]      
+hub.port.[A,B,C,D,E,F].motor.mode()  # [(1, 0), (2, 2), (3, 1), (0, 0)]        
+hub.port.[A,B,C,D,E,F].motor.pid()   # (0, 0, 0)         
+hub.port.[A,B,C,D,E,F].motor.run_at_speed() # speed arg
+''' 
+speed = 50, max_power = 100, acceleration = 100, deceleration = 100, stall = False
+'''
+hub.port.[A,B,C,D,E,F].motor.run_for_degrees() # 1 arg, can 2               
+hub.port.[A,B,C,D,E,F].motor.run_for_time() # 1 arg, can 3, time - msec and speed
+hub.port.[A,B,C,D,E,F].motor.run_to_position() # 1 arg, can 2, position and speed
+
+hub.port.[A,B,C,D,E,F].motor.preset()  # 2 args          
+hub.port.[A,B,C,D,E,F].motor.pwm()  # 2 args, from -100 to 100    
+hub.port.[A,B,C,D,E,F].motor.pair() # 2 args 
+# hub.port.A.motor.pair(hub.port.B.motor)
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# SOUND 
-
-def on_start():
-  hub.sound.volume()
-  hub.sound.volume(10)  # 0 - 10 
-  hub.sound.beep()
-  hub.sound.beep(2000, 500, 3)  # freq, time, waveform (sin,square,triangle, sawtooth)
-
-
-
-# MOTION
-hub.motion.accelerometer() --> tuple with (x,y,z) axis
-hub.motion.accelerometer_filter()
-hub.motion.gyroscope() --> tuple with (x,y,z) axis in degrees
-hub.motion.gyroscope_filter()
-hub.motion.preset_yaw()
-hub.motion.reset_yaw()
-hub.motion.position() --> tuple with (x,y,z) axis in degrees 
-hub.motion.orientation() --> string with gesture
-hub.motion.callback(XXX) --> ?
-hub.motion.gesture('GESTURE') --> boolean --> is currently GESTURE
-hub.motion.was_gesture('GESTURE') --> boolean --> was GESTURE since last call
-
-
-def on_start(vm, stack):
-  hub.motion.accelerometer()
-  hub.motion.gyroscope()
-  hub.motion.position()
-  hub.motion.orientation()  # has a callback option
-  def beep():
-      hub.sound.volume(10)
-      hub.sound.beep(2000, 500, 3)
-  hub.motion.callback(beep())
-  hub.motion.gesture('down')  # is it currently active?
-  hub.motion.was_gesture('down')  # has it been active since the last call?
-
-
-
-# IMAGE 
-# The \n are separators by line. Each number is for each pixel/block on the screen. 
-# Each number, 0-9, sets the brightness of that pixel via pwm.
-
-hub.Image.IMAGENAME  (ex. hub.Image.SMILE)
-
-hub.display.show(image)
-hub.display.rotation() # takes two arguments
-hub.display.pixel() # takes two arguments
-
-image = hub.Image("90004\n06090\n00900\n09090\n90009")
-image = hub.Image('90009:90009:99999:09640:00900')
-
-import hub, utime
-hub.display.show(hub.Image.HAPPY)
-image = hub.Image("90009\n09090\n00900\n09090\n90009")
-image = hub.Image(2, 2, b'\x08\x08\x08\x08')
-hub.display.show(image)
-utime.sleep(1)
-		
-hub.Image.width()
-hub.Image.height()
-hub.Image.get_pixel(2,3)
-hub.Image.set_pixel(3,1,6)
-hub.Image.shift_right()
-hub.Image.shift_left()
-hub.Image.shift_up()
-hub.Image.shift_down()
-#shift takes two arguments. get_pixel takes 3 arguments, set_pixel takes 4
-
-	
-
-
-
-
-# LEDS
-import hub, utime	
-def on_start(vm, stack):
-  hub.led(255, 0, 0) # red  (r,g,b)
-  hub.led(3) # blue   (colors 0 - 10)
-  hub.led
-  for i in range(11):
-      hub.led(i)
-      utime.sleep(1)	
-# led has no methods, just 3 arguments	
-	
-	
-	
-	
-
-# MOTORS	
-	
-hub.port.A.motor.mode(1) (stop mode?)
-hub.port.A.motor.float()
-hub.port.A.motor.brake()
-
-hub.port.A.motor.pwm(100)
-
-hub.port.A.motor.run_at_speed(
-  speed = 50, 
-  max_power = 100,
-  acceleration = 100, 
-  deceleration = 100, 
-  stall = False)
-
-hub.port.A.motor.run_for_degrees(90, 50)
-hub.port.A.motor.run_to_position(90, 50)
-hub.port.A.motor.default()
-hub.port.A.motor.run_for_time(100, 50)
-	
-p = hub.port.A.motor.pair(hub.port.B.motor)
-p.run_for_time(200,40,-40)
 
 
 #MOTOR ENCODER
-hub.port.A.device.get() --> returns and integer array with [0,relative position,absolute position,0].
+hub.port.A.device.get() --> returns integer array with [0,relative position,absolute position,0].
 
 #COLOR
 hub.port.F.device.get() --> returns integer array [reflected light, color id]; color id can be type None
@@ -1010,31 +905,46 @@ hub.port.E.device.get() --> returns integer array [(raw) pressure, pressed, (SI)
 #The second entry is 0 or 1 for released or pressed. 
 #The third entry appears to also be pressure, but ranging from 382-687. 
 #It is labelled as SI_PRESSURE, but does not appear to be in Newtons or grams.
-	
-	
-def on_start():
-  hub.port.A.motor.mode(1)
-  hub.port.A.motor.get()
-  hub.port.A.motor.pwm(100) # from -100 to 100
-  utime.sleep(1)
-  hub.port.A.motor.float()
-  hub.port.A.motor.brake()
-  hub.port.A.motor.run_at_speed(speed = 50, max_power = 100, acceleration = 100, deceleration = 100, stall = False)
-  hub.port.A.motor.run_for_degrees(degrees = 90, speed = 50)
-  hub.port.A.motor.run_to_position(90, 50)  # position and speed
-  hub.port.A.motor.default()
-  hub.port.A.motor.run_for_time(100, 50)   # time - msec and speed
-  # only works if motors are connected
-  p = hub.port.A.motor.pair(hub.port.B.motor)
-  p.pwm(40,-40)   # drive straight
-  p.run_for_time(200,40,-40)
-  p.float()   # not working yet	
+
+#Ultrasonic sensor:	
+hub.port.F.device.get() --> returns integer array [distance (cm)] with a single entry (distance in cm)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	
 	
-	
-	
 # EXAMPLES
+
+import hub, utime	
+def on_start(vm, stack):
+  hub.led(255, 0, 0) # red  (r,g,b)
+  hub.led(3) # blue   (colors 0 - 10)
+  hub.led
+  for i in range(11):
+      hub.led(i)
+      utime.sleep(1)	
+
+
 
 def on_start():
   # can ask if it is currently pressed, was pressed, how many times it has been pressed, and callback
@@ -1044,11 +954,26 @@ def on_start():
       elif hub.button.right.is_pressed():
           hub.display.show(hub.Image.NO)
 		
-  hub.button.center.is_pressed()  # checks current state of center button
-  hub.button.center.was_pressed()  # checks if the  center button has been pressed since last checked
-  hub.button.center.presses()  # returns # presses since last call and rezeros
   
-  smile()
+
+def on_start():
+  hub.port.A.motor.mode(1)
+  hub.port.A.motor.get()
+  hub.port.A.motor.pwm(100) 
+  utime.sleep(1)
+  hub.port.A.motor.float()
+  hub.port.A.motor.brake()
+  hub.port.A.motor.run_at_speed(speed = 50, max_power = 100, acceleration = 100, deceleration = 100, stall = False)
+  hub.port.A.motor.run_for_degrees(degrees = 90, speed = 50)
+  hub.port.A.motor.run_to_position(90, 50)  
+  hub.port.A.motor.default()
+  hub.port.A.motor.run_for_time(100, 50)   
+  # only works if motors are connected
+  p = hub.port.A.motor.pair(hub.port.B.motor)
+  p.pwm(40,-40)   # drive straight
+  p.run_for_time(200,40,-40)
+  p.float()   # not working yet	
+
+
+
 	
-#Ultrasonic sensor:	
-hub.port.F.device.get() --> returns integer array [distance (cm)] with a single entry (distance in cm)	
