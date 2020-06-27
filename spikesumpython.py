@@ -471,76 +471,76 @@ def soundst(name='Alert', volume=100):
 
 # Values for names
 '''
-		Alert, Applause1, Applause2,
-		Applause3, Baa, Bangi, Bang2,
-		BasketballBounce, BigBoing, Bird,
-		Bite, Boat Horni, Boat Horn2, Bonk,
-		BoomCloud, BoopBingBop,
-		BowlingStrike, Burp1, Burp2, Burp3,
-		CarAcceleratel, CarAccelerating2,
-		Car Horn, Carldle, CarReverse,
-		CarSkidi, CarSkid2, CarVroom,
-		CatAngry, CatHappy, CatHiss,
-		CatMeowl, CatMeow2, CatMeow3,
-		CatPurring, CatWhining, Chatter,
-		Chirp, Clang, ClockTicking,
-		Clown Honki, Clown Honk2,
-		Clown Honk3, Coin, Collect,
-		Connect, Crank, CrazyLaugh,
-		Croak, CrowdGasp, Crunch,
-		Cuckoo, CymbalCrash, Disconnect,
-		DogBarki, Dog Bark2, DogBark3,
-		DogWhining1, DogWhining2,
-		Doorbelli, Doorbell2, Doorbell3,
-		DoorClosing, DoorCreeki,
-		DoorCreek2, Door Handle,
-		Doorknock, DoorSlaml, DoorSlam2,
-		Drum Roll, DunDunDunnn,
-		Emotional Piano, Fart1, Fart2, Fart3,
-		Footsteps, Gallop, GlassBreaking,
-		Glug, GoalCheer, Gong, Growl,
-		Grunt, HammerHit, HeadShake,
-		HighWhoosh, Jump, JungleFrogs,
-		Lasert, Laser2, Laser3,
-		Laughing Babyl, LaughingBaby2,
-		Laughing Boy, LaughingCrowd1,
-		Laughing Crowd2, Laughing Girl,
-		Laughing Male, Lose, LowBoing,
-		LowSqueak, LowWhoosh,
-		MagicSpell, MaleJumpi,
-		Male Jump2, Moo, Ocean Wave,
-		Oops, Orchestra Tuning,
-		PartyBlower, Pew, PingPongHit,
-		PlaingFlyingBy,
-		PlaneMotor Running, PlaneStarting,
-		Pluck, Police Sireni, Police Siren2,
-		Police Siren3, Punch, Rain,
-		Ricochet, Rimshot, Ring Tone, Rip,
-		Robot1, Robot2, Robot3,
-		RocketExplosion Rumble, Rooster,
-		ScramblingFeet, Screech, Seagulls,
-		ServiceAnnouncement,
-		Sewing Machine, ShipBell,
-		SirenWhistle, Skid, SlideWhistlel,
-		SlideWhistle2, Sneaker Squeak,
-		Snoring, Snort, SpaceAmbience,
-		SpaceFlyby, SpaceNoise, Splash,
-		SportWhistle1, SportWhistle2,
-		Squeaky Toy, Squish Pop,
-		SuctionCup, Tada, TelephoneRing2,
-		TelephoneRing, Teleport2,
-		Teleport3, Teleport, TennisHit,
-		ThunderStorm, TolietFlush,
-		ToyHonk, ToyZing, Traffic,
-		TrainBreaks, Train Horni,
-		Train Horn2, Train Horn3,
-		TrainOnTracks, TrainSignali,
-		TrainSignal2, TrainStart,
-		Train Whistle, Triumph,
-		TropicalBirds, Wand, WaterDrop,
-		WhistleThump, Whizi, Whiz2,
-		WindowBreaks, Win, Wobble,
-		WoodTap, Zip
+Alert, Applause1, Applause2,
+Applause3, Baa, Bangi, Bang2,
+BasketballBounce, BigBoing, Bird,
+Bite, Boat Horni, Boat Horn2, Bonk,
+BoomCloud, BoopBingBop,
+BowlingStrike, Burp1, Burp2, Burp3,
+CarAcceleratel, CarAccelerating2,
+Car Horn, Carldle, CarReverse,
+CarSkidi, CarSkid2, CarVroom,
+CatAngry, CatHappy, CatHiss,
+CatMeowl, CatMeow2, CatMeow3,
+CatPurring, CatWhining, Chatter,
+Chirp, Clang, ClockTicking,
+Clown Honki, Clown Honk2,
+Clown Honk3, Coin, Collect,
+Connect, Crank, CrazyLaugh,
+Croak, CrowdGasp, Crunch,
+Cuckoo, CymbalCrash, Disconnect,
+DogBarki, Dog Bark2, DogBark3,
+DogWhining1, DogWhining2,
+Doorbelli, Doorbell2, Doorbell3,
+DoorClosing, DoorCreeki,
+DoorCreek2, Door Handle,
+Doorknock, DoorSlaml, DoorSlam2,
+Drum Roll, DunDunDunnn,
+Emotional Piano, Fart1, Fart2, Fart3,
+Footsteps, Gallop, GlassBreaking,
+Glug, GoalCheer, Gong, Growl,
+Grunt, HammerHit, HeadShake,
+HighWhoosh, Jump, JungleFrogs,
+Lasert, Laser2, Laser3,
+Laughing Babyl, LaughingBaby2,
+Laughing Boy, LaughingCrowd1,
+Laughing Crowd2, Laughing Girl,
+Laughing Male, Lose, LowBoing,
+LowSqueak, LowWhoosh,
+MagicSpell, MaleJumpi,
+Male Jump2, Moo, Ocean Wave,
+Oops, Orchestra Tuning,
+PartyBlower, Pew, PingPongHit,
+PlaingFlyingBy,
+PlaneMotor Running, PlaneStarting,
+Pluck, Police Sireni, Police Siren2,
+Police Siren3, Punch, Rain,
+Ricochet, Rimshot, Ring Tone, Rip,
+Robot1, Robot2, Robot3,
+RocketExplosion Rumble, Rooster,
+ScramblingFeet, Screech, Seagulls,
+ServiceAnnouncement,
+Sewing Machine, ShipBell,
+SirenWhistle, Skid, SlideWhistlel,
+SlideWhistle2, Sneaker Squeak,
+Snoring, Snort, SpaceAmbience,
+SpaceFlyby, SpaceNoise, Splash,
+SportWhistle1, SportWhistle2,
+Squeaky Toy, Squish Pop,
+SuctionCup, Tada, TelephoneRing2,
+TelephoneRing, Teleport2,
+Teleport3, Teleport, TennisHit,
+ThunderStorm, TolietFlush,
+ToyHonk, ToyZing, Traffic,
+TrainBreaks, Train Horni,
+Train Horn2, Train Horn3,
+TrainOnTracks, TrainSignali,
+TrainSignal2, TrainStart,
+Train Whistle, Triumph,
+TropicalBirds, Wand, WaterDrop,
+WhistleThump, Whizi, Whiz2,
+WindowBreaks, Win, Wobble,
+WoodTap, Zip
 '''
 
 
@@ -565,6 +565,7 @@ hub.status()
 hub.repl_restart()
 hub.supervision.info()
 hub.file_transfer()
+hub.led()
 
 # MULTIPLE COMMANDS
 hub.bluetooth()
@@ -574,7 +575,6 @@ hub.USB_VCP()
 hub.button()
 hub.sound()
 hub.motion()
-hub.led()
 hub.Image()
 hub.display()
 hub.port()
@@ -594,8 +594,9 @@ hub.ble.rssi()
 
 
 
+
 # BATTERY
-hub.battery.info()
+
 hub.battery.BATTERY_BAD_BATTERY()
 hub.battery.BATTERY_HUB_TEMPERATURE_CRITICAL_OUT_OF_RANGE()   
 hub.battery.BATTERY_NO_ERROR()
@@ -609,11 +610,14 @@ hub.battery.CHARGER_STATE_FAIL()
 hub.battery.USB_CH_PORT_CDP()
 hub.battery.USB_CH_PORT_DCP()            
 hub.battery.USB_CH_PORT_NONE()
-hub.battery.USB_CH_PORT_SDP()               
+hub.battery.USB_CH_PORT_SDP()
+
+# from_bytes to_bytes
+
+hub.battery.info()
 hub.battery.capacity_left()
 hub.battery.charger_detect()
 hub.battery.current()         
-hub.battery.info()            
 hub.battery.temperature()     
 hub.battery.voltage()
 
@@ -639,8 +643,6 @@ hub.USB_VCP.recv()
 
 
 
-
-
 # BUTTON
 hub.button.left()
 hub.button.right()
@@ -654,49 +656,205 @@ hub.button.[left/right/center].on_change()
 
 
 
+
 # SOUND
 hub.sound.beep()
 hub.sound.play()
 hub.sound.volume()
+
 hub.sound.SOUND_SIN()
 hub.sound.SOUND_SQUARE()
 hub.sound.SOUND_TRIANGLE()
 hub.sound.SOUND_SAWTOOTH()
 
-# from_bytes
-# to_bytes
+# from_bytes to_bytes
 
 
 
 
 # MOTION
 
+hub.motion.FREEFALL()
+hub.motion.SHAKE()
+hub.motion.LEFTSIDE()        
+hub.motion.RIGHTSIDE()
+hub.motion.FRONT()    
+hub.motion.BACK()     
+hub.motion.UP()
+hub.motion.DOWN()
+hub.motion.TAPPED()         
+hub.motion.DOUBLETAPPED()    
+hub.motion.NONE()
+
+hub.motion.[BACK,UP,etc].
+
+__class__       
+hub.motion.[BACK,UP,etc].count()           
+hub.motion.[BACK,UP,etc].endswith()        
+hub.motion.[BACK,UP,etc].find()
+hub.motion.[BACK,UP,etc].format()      
+hub.motion.[BACK,UP,etc].index()        
+hub.motion.[BACK,UP,etc].isalpha()         
+hub.motion.[BACK,UP,etc].isdigit()
+hub.motion.[BACK,UP,etc].islower()         
+hub.motion.[BACK,UP,etc].isspace()         
+hub.motion.[BACK,UP,etc].isupper()         
+hub.motion.[BACK,UP,etc].join()
+hub.motion.[BACK,UP,etc].lower()         
+hub.motion.[BACK,UP,etc].lstrip()         
+hub.motion.[BACK,UP,etc].replace()        
+hub.motion.[BACK,UP,etc].rfind()
+hub.motion.[BACK,UP,etc].rindex()       
+hub.motion.[BACK,UP,etc].rsplit()        
+hub.motion.[BACK,UP,etc].rstrip()        
+hub.motion.[BACK,UP,etc].split()
+hub.motion.[BACK,UP,etc].startswith()      
+hub.motion.[BACK,UP,etc].strip()    
+hub.motion.[BACK,UP,etc].upper()         
+hub.motion.[BACK,UP,etc].center()
+hub.motion.[BACK,UP,etc].encode()         
+hub.motion.[BACK,UP,etc].partition()       
+hub.motion.[BACK,UP,etc].rpartition()     
+hub.motion.[BACK,UP,etc].splitlines()
 
 
 
+hub.motion.accelerometer()
+hub.motion.accelerometer_filter()
+hub.motion.gyroscope()       
+hub.motion.gyroscope_filter()
+hub.motion.orientation()
+hub.motion.position()   
+hub.motion.preset_yaw()      
+hub.motion.reset_yaw()
+hub.motion.was_gesture()
+hub.motion.gesture()
 
-# LED
+# GESTURES
+LEFTSIDE, RIGHTSIDE, UP, DOWN, FRONT, BACK
+TAPPED, DOUBLETAPPED, SHAKE, FREEFALL
 
 
 
-
-# IMAGE
 
 
 
 
 # DISPLAY
 
+hub.display.show()
+hub.display.clear()
+hub.display.pixel()
+hub.display.rotation()
 
 
 
 
+# IMAGE
+
+hub.Image.get_pixel()       
+hub.Image.set_pixel() 
+hub.Image.height()     
+hub.Image.width()      
+hub.Image.shift_left()     
+hub.Image.shift_right()    
+hub.Image.shift_up()   
+hub.Image.shift_down()
+
+
+'''
+hub.Image.HEART, hub.Image.HEART_SMALL, hub.Image.HAPPY, 
+hub.Image.SMILE, hub.Image.SAD, hub.Image.CONFUSED, 
+hub.Image.ANGRY, hub.Image.ASLEEP, hub.Image.SURPRISED, 
+hub.Image.SILLY, hub.Image.FABULOUS, hub.Image.MEH,
+hub.Image.CLOCK12, hub.Image.CLOCK11, hub.Image.CLOCK10, 
+hub.Image.CLOCK9, hub.Image.CLOCK8, hub.Image.CLOCK7, 
+hub.Image.CLOCK6, hub.Image.CLOCK5, hub.Image.CLOCK4, 
+hub.Image.CLOCK3, hub.Image.CLOCK2, hub.Image.CLOCK1,
+hub.Image.ARROW_N, hub.Image.ARROW_NE, hub.Image.ARROW_E, 
+hub.Image.ARROW_SE, hub.Image.ARROW_S, hub.Image.ARROW_SW, 
+hub.Image.ARROW_W, hub.Image.ARROW_NW, hub.Image.TRIANGLE, 
+hub.Image.TRIANGLE_LEFT, hub.Image.CHESSBOARD, hub.Image.DIAMOND, 
+hub.Image.DIAMOND_SMALL, hub.Image.SQUARE, hub.Image.SQUARE_SMALL, 
+hub.Image.RABBIT, hub.Image.COW, hub.Image.MUSIC_CROTCHET, 
+hub.Image.MUSIC_QUAVER, hub.Image.MUSIC_QUAVERS, hub.Image.PITCHFORK, 
+hub.Image.XMAS, hub.Image.PACMAN, hub.Image.TARGET, 
+hub.Image.TSHIRT, hub.Image.ROLLERSKATE, hub.Image.DUCK, 
+hub.Image.HOUSE, hub.Image.TORTOISE, hub.Image.BUTTERFLY, 
+hub.Image.STICKFIGURE, hub.Image.GHOST, hub.Image.SWORD, 
+hub.Image.GIRAFFE, hub.Image.SKULL, hub.Image.UMBRELLA, 
+hub.Image.SNAKE, hub.Image.ALL_CLOCKS, hub.Image.ALL_ARROWS, 
+hub.Image.YES, hub.Image.NO
+'''
+
+
+# You use display with image:
+
+hub.display.show(hub.Image.YES)
 
 
 
 
 # PORT
 
+hub.port.ATTACHED        
+hub.port.DETACHED        
+hub.port.MODE_DEFAULT
+hub.port.MODE_GPIO       
+hub.port.MODE_FULL_DUPLEX                
+hub.port.MODE_HALF_DUPLEX
+
+# from_bytes to_bytes
+
+hub.port.A
+hub.port.B               
+hub.port.C               
+hub.port.D
+hub.port.E               
+hub.port.F               
+
+hub.port.[A,B,C,D,E,F].
+
+        
+hub.port.[A,B,C,D,E,F].info
+hub.port.[A,B,C,D,E,F].mode            
+hub.port.[A,B,C,D,E,F].pwm
+hub.port.[A,B,C,D,E,F].device
+
+
+
+# ONLY APPEARS WHEN MOTOR IS CONNECTED  
+hub.port.[A,B,C,D,E,F].motor.
+
+             
+hub.port.[A,B,C,D,E,F].motor.BUSY_MODE()       
+hub.port.[A,B,C,D,E,F].motor.BUSY_MOTOR()
+hub.port.[A,B,C,D,E,F].motor.EVENT_COMPLETED()                 
+hub.port.[A,B,C,D,E,F].motor.EVENT_INTERRUPTED()
+hub.port.[A,B,C,D,E,F].motor.FORMAT_PCT()
+hub.port.[A,B,C,D,E,F].motor.FORMAT_RAW()    
+hub.port.[A,B,C,D,E,F].motor.FORMAT_SI()    
+hub.port.[A,B,C,D,E,F].motor.PID_POSITION()
+hub.port.[A,B,C,D,E,F].motor.PID_SPEED()  
+hub.port.[A,B,C,D,E,F].motor.STOP_BRAKE()     
+hub.port.[A,B,C,D,E,F].motor.STOP_FLOAT()    
+hub.port.[A,B,C,D,E,F].motor.STOP_HOLD()
+
+hub.port.[A,B,C,D,E,F].motor.get()
+hub.port.[A,B,C,D,E,F].motor.brake()           
+hub.port.[A,B,C,D,E,F].motor.busy()           
+hub.port.[A,B,C,D,E,F].motor.default()
+hub.port.[A,B,C,D,E,F].motor.float()       
+hub.port.[A,B,C,D,E,F].motor.hold()         
+hub.port.[A,B,C,D,E,F].motor.mode()          
+hub.port.[A,B,C,D,E,F].motor.pair()
+hub.port.[A,B,C,D,E,F].motor.pid()          
+hub.port.[A,B,C,D,E,F].motor.preset()          
+hub.port.[A,B,C,D,E,F].motor.pwm()        
+hub.port.[A,B,C,D,E,F].motor.run_at_speed()
+hub.port.[A,B,C,D,E,F].motor.run_for_degrees()                 
+hub.port.[A,B,C,D,E,F].motor.run_for_time()
+hub.port.[A,B,C,D,E,F].motor.run_to_position()
 
 
 
@@ -713,22 +871,17 @@ hub.sound.SOUND_SAWTOOTH()
 
 
 
-# BATTERY
-hub.battery
-hub.battery.info()
 
-# BUTTONS
-hub.button.left.presses()
-hub.button.right.presses()
-hub.button.center.presses()
 
-hub.button.left.is_pressed()
-hub.button.right.is_pressed()
-hub.button.center.is_pressed()
 
-hub.button.left.was_pressed()
-hub.button.right.was_pressed()
-hub.button.center.was_pressed()
+
+
+
+
+
+
+
+
 
 
 
@@ -755,9 +908,6 @@ hub.motion.callback(XXX) --> ?
 hub.motion.gesture('GESTURE') --> boolean --> is currently GESTURE
 hub.motion.was_gesture('GESTURE') --> boolean --> was GESTURE since last call
 
-# GESTURES
-LEFTSIDE, RIGHTSIDE, UP, DOWN, FRONT, BACK
-TAPPED, DOUBLETAPPED, SHAKE, FREEFALL
 
 def on_start(vm, stack):
   hub.motion.accelerometer()
@@ -804,20 +954,7 @@ hub.Image.shift_down()
 #shift takes two arguments. get_pixel takes 3 arguments, set_pixel takes 4
 
 	
-'''
-Image.HEART, Image.HEART_SMALL, Image.HAPPY, Image.SMILE, Image.SAD, Image.CONFUSED
-Image.ANGRY, Image.ASLEEP, Image.SURPRISED, Image.SILLY, Image.FABULOUS, Image.MEH
-Image.CLOCK12, Image.CLOCK11, Image.CLOCK10, Image.CLOCK9, Image.CLOCK8, Image.CLOCK7, 
-Image.CLOCK6, Image.CLOCK5, Image.CLOCK4, Image.CLOCK3, Image.CLOCK2, Image.CLOCK1
-Image.ARROW_N, Image.ARROW_NE, Image.ARROW_E, Image.ARROW_SE, Image.ARROW_S, 
-Image.ARROW_SW, Image.ARROW_W, Image.ARROW_NW, Image.TRIANGLE, Image.TRIANGLE_LEFT
-Image.CHESSBOARD, Image.DIAMOND, Image.DIAMOND_SMALL, Image.SQUARE, Image.SQUARE_SMALL
-Image.RABBIT, Image.COW, Image.MUSIC_CROTCHET, Image.MUSIC_QUAVER, Image.MUSIC_QUAVERS
-Image.PITCHFORK, Image.XMAS, Image.PACMAN, Image.TARGET, Image.TSHIRT, Image.ROLLERSKATE
-Image.DUCK, Image.HOUSE, Image.TORTOISE, Image.BUTTERFLY, Image.STICKFIGURE, Image.GHOST
-Image.SWORD, Image.GIRAFFE, Image.SKULL, Image.UMBRELLA, Image.SNAKE, Image.ALL_CLOCKS
-Image.ALL_ARROWS, Image.YES, Image.NO
-'''
+
 
 
 
