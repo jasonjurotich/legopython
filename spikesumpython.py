@@ -30,8 +30,12 @@ def waitu(condition):
 
 # BUTTONS
 
+hub.left_button()
+hub.right_button()
 
-
+hub.[left/right].wait_until_pressed()
+hub.[left/right].is_pressed()
+hub.[left/right].was_pressed()
 
 
 def lbwup():
@@ -61,6 +65,12 @@ def rbip():
 
 
 # SPEAKER
+hub.speaker.beep()
+hub.speaker.stop()
+hub.speaker.start_beep()
+hub.speaker.get_volume()
+hub.speaker.set_volume()
+
 
 def sb(note=60, seconds=0.2):
 	# notes (44-123), default 60
@@ -87,6 +97,14 @@ def ssv(volume=100):
 # LIGHTS
 
 # 25 LEDS
+hub.light_matrix()
+
+hub.light_matrix.show_image()
+hub.light_matrix.set_pixel()
+hub.light_matrix.write()
+hub.light_matrix.off()
+
+
 
 def lsi(image='SMILE', brightness=100):
 	light = hub.light_matrix
@@ -124,6 +142,10 @@ ROLLERSKATE, SAD, SILLY, SKULL, SMILE, SQUARE
 
 # STATUS LIGHT
 
+hub.status_light.on()
+hub.status_light.off()
+
+
 def slon(color='white'):
 	# Options: black, violet, blue, cyan, green, yellow, red, white
 	# obligatory, default is white
@@ -135,6 +157,19 @@ def sloff():
 
 
 # MOTION
+hub.motion_sensor()
+
+hub.motion_sensor.get_gesture()
+hub.motion_sensor.was_gesture()
+hub.motion_sensor.wait_for_new_gesture()
+hub.motion_sensor.get_orientation()
+hub.motion_sensor.wait_for_new_orientation()
+hub.motion_sensor.get_roll_angle()
+hub.motion_sensor.get_pitch_angle()
+hub.motion_sensor.get_yaw_angle()
+hub.motion_sensor.reset_yaw_angle()
+
+
 
 def mgg():
 	# Returns: shaken, tapped, doubletapped, falling, None
@@ -177,6 +212,17 @@ def mwg(gesture=None):
 # SENSORS
 
 # DISTANCE
+DistanceSensor(port)
+
+DistanceSensor('A').get_distance_cm()
+DistanceSensor('A').get_distance_inches()
+DistanceSensor('A').get_distance_percentage()
+DistanceSensor('A').wait_for_distance_farther_than()
+DistanceSensor('A').wait_for_distance_closer_than()
+DistanceSensor('A').light_up()
+DistanceSensor('A').light_up_all()
+
+
 
 def dcm(port='C'):
 	distance = DistanceSensor(port)
@@ -217,6 +263,19 @@ def dlua(port='C', brightness=100):
 
 
 # COLOR
+ColorSensor(port)
+
+ColorSensor('C').get_color()
+ColorSensor('C').get_ambient_light()
+ColorSensor('C').get_reflected_light()
+ColorSensor('C').get_rgb_intensity()
+ColorSensor('C').get_red()
+ColorSensor('C').get_green()
+ColorSensor('C').get_blue()
+ColorSensor('C').wait_for_new_color()
+ColorSensor('C').wait_until_color()
+ColorSensor('C').light_up()
+ColorSensor('C').light_up_all()
 
 def cgc(port='A'):
 	color = ColorSensor(port)
@@ -268,6 +327,13 @@ def clu(port='A', light_1=100, light_2=100, light_3=100):
 
 
 # FORCE
+ForceSensor(port)
+ForceSensor('D').is_pressed()
+ForceSensor('D').get_force_newton()
+ForceSensor('D').get_force_percentage()
+ForceSensor('D').wait_until_pressed()
+ForceSensor('D').wait_until_released()
+
 
 def fip(port='B'):
 	force = ForceSensor(port)
@@ -294,6 +360,28 @@ def fwur(port='B'):
 # MOTOR
 
 # SINGLE MOTOR
+Motor(port)
+
+Motor('E').set_degrees_counted()
+Motor('E').set_default_speed()
+Motor('E').start()
+Motor('E').start_at_power()
+Motor('E').stop()
+Motor('E').set_stop_action()
+Motor('E').set_stall_detection()
+Motor('E').was_interrupted()
+Motor('E').was_stalled()
+Motor('E').get_speed()
+Motor('E').get_position()
+Motor('E').get_degrees_counted()
+Motor('E').get_default_speed()
+Motor('E').run_to_position()
+Motor('E').run_to_degrees_counted()
+Motor('E').run_for_degrees()
+Motor('E').run_for_rotations()
+Motor('E').run_for_seconds()
+
+
 
 def msdc(port='E', degrees=0):
 	motor = Motor(port)
@@ -391,6 +479,20 @@ def mrfs(port='E', seconds=0.2, speed=100):
 
 
 # MOTOR PAIRS
+MotorPair(port1, port2)
+
+MotorPair('E','F').get_default_speed()
+MotorPair('E','F').set_motor_rotation()
+MotorPair('E','F').set_default_speed()
+MotorPair('E','F').move()
+MotorPair('E','F').start()
+MotorPair('E','F').start_at_power()
+MotorPair('E','F').stop()
+MotorPair('E','F').set_stop_action()
+MotorPair('E','F').move_tank()
+MotorPair('E','F').start_tank()
+MotorPair('E','F').start_tank_at_power()
+
 
 def mpgds(port1='E', port2='F'):
 	motorp = MotorPair(port1, port2)
@@ -454,7 +556,7 @@ def mpsta(port1='E', port2='F', left_speed=100, right_speed=100):
 	# left_speed (-100 to 100), right_speed (-100 to 100)
 	return motorp.start_tank(left_speed, right_speed)
 
-	def mpstap(port1='E', port2='F', left_power=100, right_power=100):
+def mpstap(port1='E', port2='F', left_power=100, right_power=100):
 	motorp = MotorPair(port1, port2)
 	# left_power (-100 to 100), right_power (-100 to 100)
 	return motorp.start_tank_at_power(left_power, right_power)
@@ -462,6 +564,8 @@ def mpsta(port1='E', port2='F', left_speed=100, right_speed=100):
 
 
 # SOUND
+app.play_sound()
+app.start_sound()
 
 def sound(name='Alert', volume=100):
 	# Options for name: only from list below
