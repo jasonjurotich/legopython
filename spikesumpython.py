@@ -997,6 +997,8 @@ hub.port.A.device.get() --> returns integer array with [0,relative position,abso
 hub.port.At': {'datasets': 1, 'type': 0, 'figures': 1, 'decimals': 0}, 'capability': b' @\x00\x00\x01\x04', 'map_out': 8, 'name': 'LOAD', 'pct': (0.0, 100.0), 'map_in': 8, 'si': (0.0, 127.0), 'raw': (0.0, 127.0)}, {'symbol': '\x01\x04\x01', 'format': {'datasets': 0, 'type': 0, 'figures': 0, 'decimals': 194}, 'capability': b'\x00\x00\x00\x00\x00\x00', 'map_out': 0, 'name': 'K', 'pct': (3444.96, 1.12104e-43), 'map_in': 0, 'si': (0.0, 2.24208e-44), 'raw': (5.73972e-42, 5.73972e-42)}], 'speed': 115200, 'hw_version': 4096, 'combi_modes': (14, 15), 'type': 48}
 """
 
+
+
 #COLOR
 hub.port.F.device.get() --> returns integer array [reflected light, color id]; color id can be type None
 # [1, None, 5, 5, 5]
@@ -1084,6 +1086,51 @@ def on_start():
   p.pwm(40,-40)   # drive straight
   p.run_for_time(200,40,-40)
 
+
+
+
+class trackMotor():
+	def __init__(self,port):
+		self.motor = eval("hub.port."+port+".motor")
+		speed_pct, encoder, abs_encoder, pwn = self.motor.get()
+		self.offset = encoder - abs_encoder
+		
+	def track(self, position):
+		enc_position = position + self.offset
+		error = enc_position - self.motor.get()[1]
+		voltage = round(min(max(error * 1.2, -100),100)) 
+		self.motor.pwn(voltage)
+
+	def stop(self):
+		self.motor.pwn(0)
+
+
+	leftleg = trackMotor('F')
+	rightleg = trackMotor('B')
+	body = trackMotor('C')
+
+	def setbodypos(position):
+		position = min(max(position,-100,100))
+		leftleg.track(position)	
+		body.track(position)
+		rightleg.track(position * -1)
+		
+	def stopmotors():
+		leftleg.stop()
+		rightleg.stop()
+		body.stop()		
+
+
+	while not hub.button.center.is_pressed():
+		rollspeed = hub.motion.gyroscope()[0]
+		setbodypos(rollspeed * -0.1)
+		utime.sleep_ms(20)
+		
+	stopmotors()
+		
+		
+		
+	
 
 
 
