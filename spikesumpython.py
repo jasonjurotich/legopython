@@ -1089,6 +1089,10 @@ def on_start():
 
 
 
+# Negative roll rate, monkey swinging forward
+# pwm sets the voltage of the motor
+# pwm plays with the weight of the motors as well
+
 class trackMotor():
 	def __init__(self,port):
 		self.motor = eval("hub.port."+port+".motor")
@@ -1105,28 +1109,28 @@ class trackMotor():
 		self.motor.pwn(0)
 
 
-	leftleg = trackMotor('F')
-	rightleg = trackMotor('B')
-	body = trackMotor('C')
+leftleg = trackMotor('F')
+rightleg = trackMotor('B')
+body = trackMotor('C')
 
-	def setbodypos(position):
-		position = min(max(position,-100,100))
-		leftleg.track(position)	
-		body.track(position)
-		rightleg.track(position * -1)
-		
-	def stopmotors():
-		leftleg.stop()
-		rightleg.stop()
-		body.stop()		
+def setbodypos(position):
+	position = min(max(position,-100,100))
+	leftleg.track(position)	
+	body.track(position)
+	rightleg.track(position * -1)
+	
+def stopmotors():
+	leftleg.stop()
+	rightleg.stop()
+	body.stop()		
 
 
-	while not hub.button.center.is_pressed():
-		rollspeed = hub.motion.gyroscope()[0]
-		setbodypos(rollspeed * -0.1)
-		utime.sleep_ms(20)
-		
-	stopmotors()
+while not hub.button.center.is_pressed():
+	rollspeed = hub.motion.gyroscope()[0]
+	setbodypos(rollspeed * -0.1)
+	utime.sleep_ms(20)
+	
+stopmotors()
 		
 		
 		
