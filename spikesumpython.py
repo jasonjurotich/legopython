@@ -901,7 +901,7 @@ hub.motion.[BACK,UP,etc].splitlines()
 
 hub.motion.accelerometer() # tuple with (x,y,z) axis
 hub.motion.accelerometer_filter()
-hub.motion.gyroscope() # tuple with (x,y,z) axis in degrees      
+hub.motion.gyroscope() # tuple with (x,y,z) axis in degrees, rool rate first number      
 hub.motion.gyroscope_filter()
 hub.motion.orientation() # string with gesture Upper or lower case???
 hub.motion.position() # tuple with (x,y,z) axis in degrees
@@ -971,7 +971,9 @@ hub.port.[A,B,C,D,E,F].motor.hold()
 hub.port.[A,B,C,D,E,F].motor.default()
 '''{'pid': (0, 0, 0), 'max_power': 0, 'speed': 0, 'stall': True, 'deceleration': 150, 'stop': 1, 'callback': <bound_method>, 'acceleration': 100}'''
 
-hub.port.[A,B,C,D,E,F].motor.get()  # [0, 0, 175, 0]      
+
+hub.port.[A,B,C,D,E,F].motor.get() 
+# [0, 0, 175, 0]  speed %, position, absolute position, power      
 hub.port.[A,B,C,D,E,F].motor.mode()  # [(1, 0), (2, 2), (3, 1), (0, 0)]        
 hub.port.[A,B,C,D,E,F].motor.pid()   # (0, 0, 0)         
 hub.port.[A,B,C,D,E,F].motor.run_at_speed() # speed arg
@@ -1093,20 +1095,25 @@ def on_start():
 # pwm sets the voltage of the motor
 # pwm plays with the weight of the motors as well
 
+import hub
+import utime
+
 class trackMotor():
-	def __init__(self,port):
+	def __init__(self, port):
 		self.motor = eval("hub.port."+port+".motor")
-		speed_pct, encoder, abs_encoder, pwn = self.motor.get()
-		self.offset = encoder - abs_encoder
+		# this grabs the four values reported in motor.get 
+		spper, pos, abpos, pwm = self.motor.get()
+		# the offset makes the position and aboslute position return to 0
+		self.offset = pos - abpos
 		
 	def track(self, position):
 		enc_position = position + self.offset
 		error = enc_position - self.motor.get()[1]
 		voltage = round(min(max(error * 1.2, -100),100)) 
-		self.motor.pwn(voltage)
+		self.motor.pwm(voltage)
 
 	def stop(self):
-		self.motor.pwn(0)
+		self.motor.pwm(0)
 
 
 leftleg = trackMotor('F')
@@ -1114,7 +1121,7 @@ rightleg = trackMotor('B')
 body = trackMotor('C')
 
 def setbodypos(position):
-	position = min(max(position,-100,100))
+	position = min(max(position,-100),100)
 	leftleg.track(position)	
 	body.track(position)
 	rightleg.track(position * -1)
@@ -1132,7 +1139,8 @@ while not hub.button.center.is_pressed():
 	
 stopmotors()
 		
-		
+
+# in micropython terminal, control e, cmd v,  control d to run		
 		
 	
 
